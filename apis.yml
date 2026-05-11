@@ -1,0 +1,64 @@
+aid: pushbullet
+name: Pushbullet
+description: >-
+  Pushbullet is a cross-device messaging and notification service that lets
+  users sync notifications, links, files, and SMS between phones, tablets,
+  and computers. The Pushbullet HTTP API enables developers to send pushes,
+  manage devices and contacts, transfer files, subscribe to channels, and
+  stream real-time events over WebSockets. Authentication uses access tokens
+  passed in the `Access-Token` header, with optional OAuth 2.0 for
+  third-party applications.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Notifications
+  - Messaging
+  - Push Notifications
+  - Device Sync
+  - SMS
+  - File Transfer
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: pushbullet:http-api
+    name: Pushbullet HTTP API
+    description: >-
+      REST API for sending and managing pushes, devices, chats, channels,
+      subscriptions, and file uploads across the Pushbullet ecosystem.
+      Authentication uses an access token from account settings supplied via
+      the `Access-Token` header; OAuth 2.0 is available for third-party apps.
+    humanURL: https://docs.pushbullet.com
+    baseURL: https://api.pushbullet.com/v2
+    tags:
+      - Notifications
+      - Push
+      - Devices
+      - Messaging
+      - SMS
+    properties:
+      - type: Documentation
+        url: https://docs.pushbullet.com
+      - type: OAuth
+        url: https://docs.pushbullet.com/#oauth2
+      - type: Realtime Event Stream
+        url: https://docs.pushbullet.com/#realtime-event-stream
+
+common:
+  - type: Website
+    url: https://www.pushbullet.com
+  - type: Documentation
+    url: https://docs.pushbullet.com
+  - type: Sign Up
+    url: https://www.pushbullet.com/signup
+  - type: Pricing
+    url: https://www.pushbullet.com/pro
+  - type: Account Settings
+    url: https://www.pushbullet.com/#settings/account
+  - type: Help
+    url: https://help.pushbullet.com
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

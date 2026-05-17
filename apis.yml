@@ -51,7 +51,7 @@ common:
     url: https://www.pushbullet.com
   - type: Documentation
     url: https://docs.pushbullet.com
-  - type: Sign Up
+  - type: SignUp
     url: https://www.pushbullet.com/signup
   - type: Pricing
     url: https://www.pushbullet.com/pro

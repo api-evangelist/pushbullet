@@ -47,6 +47,10 @@ apis:
         url: https://docs.pushbullet.com/#realtime-event-stream
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/pushbullet
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/pushbullet
   - type: Website
     url: https://www.pushbullet.com
   - type: Documentation

@@ -20,7 +20,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-11'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: pushbullet:http-api
@@ -45,6 +45,26 @@ apis:
         url: https://docs.pushbullet.com/#oauth2
       - type: Realtime Event Stream
         url: https://docs.pushbullet.com/#realtime-event-stream
+  - aid: pushbullet:realtime-event-stream
+    name: Pushbullet Realtime Event Stream
+    description: >-
+      Secure WebSocket stream that delivers realtime events to a Pushbullet
+      account, including periodic `nop` keep-alives, `tickle` notifications
+      that signal changes to pushes or devices, and `push` ephemerals for
+      mirrored notifications, dismissals, and universal clipboard.
+    humanURL: https://docs.pushbullet.com/#realtime-event-stream
+    baseURL: wss://stream.pushbullet.com/websocket
+    tags:
+      - Realtime
+      - WebSockets
+      - Streaming
+      - Push Notifications
+      - Events
+    properties:
+      - type: Documentation
+        url: https://docs.pushbullet.com/#realtime-event-stream
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/openapi/pushbullet-asyncapi.yml
 
 common:
   - type: GitHubOrganization

@@ -1,0 +1,321 @@
+asyncapi: '2.6.0'
+info:
+  title: Pushbullet Realtime Event Stream
+  version: 'v2'
+  description: |
+    The Pushbullet Realtime Event Stream lets clients receive notifications
+    about server-side changes (tickles) and ephemeral push messages
+    (mirrored notifications, dismissals, universal clipboard) over a secure
+    WebSocket connection.
+
+    Clients open a WebSocket connection to
+    `wss://stream.pushbullet.com/websocket/{access_token}` where
+    `{access_token}` is the user's Pushbullet account access token.
+
+    The server periodically sends a `nop` message (approximately every 30
+    seconds) to keep the connection alive. When a `tickle` arrives the
+    client should fetch the updated resources (pushes or devices) from the
+    HTTP API using the `modified_after` parameter. When a `push` message
+    arrives it contains an ephemeral payload (mirror, dismissal or clip).
+  contact:
+    name: Pushbullet
+    url: https://www.pushbullet.com
+externalDocs:
+  description: Pushbullet Realtime Event Stream documentation
+  url: https://docs.pushbullet.com/#realtime-event-stream
+defaultContentType: application/json
+servers:
+  production:
+    url: stream.pushbullet.com
+    protocol: wss
+    description: Pushbullet Realtime Event Stream WebSocket endpoint.
+    security:
+      - accessTokenPath: []
+channels:
+  /websocket/{access_token}:
+    description: |
+      WebSocket channel that streams realtime events to a single
+      authenticated user. The `access_token` path parameter is the
+      Pushbullet account access token.
+    parameters:
+      access_token:
+        description: Pushbullet account access token used to authenticate the WebSocket connection.
+        schema:
+          type: string
+    subscribe:
+      operationId: receiveStreamMessage
+      summary: Receive realtime stream messages from Pushbullet.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Nop'
+          - $ref: '#/components/messages/Tickle'
+          - $ref: '#/components/messages/Push'
+components:
+  securitySchemes:
+    accessTokenPath:
+      type: httpApiKey
+      in: query
+      name: access_token
+      description: |
+        Pushbullet authenticates the realtime stream by appending the
+        account access token to the WebSocket URL path:
+        `wss://stream.pushbullet.com/websocket/{access_token}`.
+  messages:
+    Nop:
+      name: Nop
+      title: No-op keep-alive
+      summary: Periodic keep-alive message sent approximately every 30 seconds.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/NopEvent'
+      examples:
+        - name: nop
+          summary: Keep-alive message
+          payload:
+            type: nop
+    Tickle:
+      name: Tickle
+      title: Tickle notification
+      summary: |
+        Notification that server-side resources of the given `subtype`
+        have changed. The client should fetch updated resources via the
+        HTTP API using `modified_after`.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TickleEvent'
+      examples:
+        - name: tickle-push
+          summary: Pushes changed
+          payload:
+            type: tickle
+            subtype: push
+        - name: tickle-device
+          summary: Devices changed
+          payload:
+            type: tickle
+            subtype: device
+    Push:
+      name: Push
+      title: Ephemeral push
+      summary: |
+        Ephemeral push delivered directly over the stream. Used for
+        mirrored notifications, dismissals and universal clipboard. Not
+        used for normal (persistent) pushes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PushEvent'
+      examples:
+        - name: push-mirror
+          summary: Mirrored notification
+          payload:
+            type: push
+            push:
+              type: mirror
+              application_name: Pushbullet
+              body: Notification message text
+              created: 1399350964.16497
+              dismissable: true
+              icon: base64-encoded JPEG
+              iden: notification_id_here
+              notification_id: "-8"
+              notification_tag: null
+              package_name: com.pushbullet.android
+              receiver_email: user@example.com
+              receiver_email_normalized: user@example.com
+              receiver_iden: ujpah72o0
+              sender_email: user@example.com
+              sender_email_normalized: user@example.com
+              sender_iden: ujpah72o0
+              source_device_iden: ujpah72o0sjAoRtnM0jc
+              title: Notification Title
+        - name: push-dismissal
+          summary: Notification dismissal
+          payload:
+            type: push
+            push:
+              type: dismissal
+              created: 1399350966.22458
+              iden: notification_id
+              notification_id: "-8"
+              notification_tag: null
+              package_name: com.pushbullet.android
+              receiver_email: user@example.com
+              receiver_email_normalized: user@example.com
+              receiver_iden: ujpah72o0
+              sender_email: user@example.com
+              sender_email_normalized: user@example.com
+              sender_iden: ujpah72o0
+              source_device_iden: ujpah72o0sjAoRtnM0jc
+        - name: push-clip
+          summary: Universal clipboard
+          payload:
+            type: push
+            push:
+              type: clip
+              body: http://www.google.com
+              source_device_iden: ujpah72o0sjAoRtnM0jc
+              source_user_iden: ujpah72o0
+  schemas:
+    NopEvent:
+      type: object
+      description: Keep-alive message sent approximately every 30 seconds.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum: [nop]
+          description: Always `nop`.
+    TickleEvent:
+      type: object
+      description: |
+        Notifies the client that server-side resources of a given subtype
+        have changed and should be re-fetched.
+      required:
+        - type
+        - subtype
+      properties:
+        type:
+          type: string
+          enum: [tickle]
+        subtype:
+          type: string
+          description: Resource collection that changed.
+          enum:
+            - push
+            - device
+    PushEvent:
+      type: object
+      description: Envelope for an ephemeral push delivered over the stream.
+      required:
+        - type
+        - push
+      properties:
+        type:
+          type: string
+          enum: [push]
+        push:
+          oneOf:
+            - $ref: '#/components/schemas/MirrorEphemeral'
+            - $ref: '#/components/schemas/DismissalEphemeral'
+            - $ref: '#/components/schemas/ClipEphemeral'
+          discriminator: type
+    MirrorEphemeral:
+      type: object
+      description: Notification mirrored from an Android device.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum: [mirror]
+        application_name:
+          type: string
+          description: Name of the application that posted the notification.
+        body:
+          type: string
+          description: Notification body text.
+        created:
+          type: number
+          format: double
+          description: Unix timestamp of creation.
+        dismissable:
+          type: boolean
+          description: Whether the notification can be dismissed.
+        icon:
+          type: string
+          description: Base64-encoded JPEG icon for the notification.
+        iden:
+          type: string
+          description: Unique identifier of the notification.
+        notification_id:
+          type: string
+          description: Android notification id.
+        notification_tag:
+          type: string
+          nullable: true
+          description: Android notification tag.
+        package_name:
+          type: string
+          description: Android package name of the source application.
+        receiver_email:
+          type: string
+          format: email
+        receiver_email_normalized:
+          type: string
+          format: email
+        receiver_iden:
+          type: string
+        sender_email:
+          type: string
+          format: email
+        sender_email_normalized:
+          type: string
+          format: email
+        sender_iden:
+          type: string
+        source_device_iden:
+          type: string
+          description: Identifier of the device the notification originated from.
+        title:
+          type: string
+          description: Notification title.
+    DismissalEphemeral:
+      type: object
+      description: Notification dismissal message.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum: [dismissal]
+        created:
+          type: number
+          format: double
+          description: Unix timestamp of creation.
+        iden:
+          type: string
+          description: Identifier of the notification being dismissed.
+        notification_id:
+          type: string
+        notification_tag:
+          type: string
+          nullable: true
+        package_name:
+          type: string
+        receiver_email:
+          type: string
+          format: email
+        receiver_email_normalized:
+          type: string
+          format: email
+        receiver_iden:
+          type: string
+        sender_email:
+          type: string
+          format: email
+        sender_email_normalized:
+          type: string
+          format: email
+        sender_iden:
+          type: string
+        source_device_iden:
+          type: string
+    ClipEphemeral:
+      type: object
+      description: Universal clipboard message synchronizing text across devices.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum: [clip]
+        body:
+          type: string
+          description: Text content to copy to the clipboard.
+        source_device_iden:
+          type: string
+          description: Identifier of the device that originated the clip.
+        source_user_iden:
+          type: string
+          description: Identifier of the user that originated the clip.

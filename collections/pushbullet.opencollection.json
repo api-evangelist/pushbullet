@@ -1,0 +1,489 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pushbullet HTTP API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Access-Token",
+      "value": "{{Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/users/me"
+          },
+          "docs": "Get the current user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/devices"
+          },
+          "docs": "List devices"
+        },
+        {
+          "info": {
+            "name": "Create a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a device"
+        },
+        {
+          "info": {
+            "name": "Update a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/devices/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a device"
+        },
+        {
+          "info": {
+            "name": "Delete a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/devices/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a device"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pushes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pushes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/pushes",
+            "params": [
+              {
+                "name": "modified_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List pushes"
+        },
+        {
+          "info": {
+            "name": "Send a push",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/pushes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a push"
+        },
+        {
+          "info": {
+            "name": "Delete all pushes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/pushes"
+          },
+          "docs": "Delete all pushes"
+        },
+        {
+          "info": {
+            "name": "Update a push (dismiss)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/pushes/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a push (dismiss)"
+        },
+        {
+          "info": {
+            "name": "Delete a push",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/pushes/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a push"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Chats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List chats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/chats"
+          },
+          "docs": "List chats"
+        },
+        {
+          "info": {
+            "name": "Create chat with email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/chats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create chat with email"
+        },
+        {
+          "info": {
+            "name": "Update chat (mute)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/chats/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update chat (mute)"
+        },
+        {
+          "info": {
+            "name": "Delete chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/chats/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete chat"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/channels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create channel"
+        },
+        {
+          "info": {
+            "name": "Get channel info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/channel-info",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "no_recent_pushes",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get channel info"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/subscriptions"
+          },
+          "docs": "List subscriptions"
+        },
+        {
+          "info": {
+            "name": "Subscribe to a channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe to a channel"
+        },
+        {
+          "info": {
+            "name": "Update subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/subscriptions/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update subscription"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/subscriptions/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Unsubscribe"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Texts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send SMS/MMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/texts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send SMS/MMS"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ephemerals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an ephemeral",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/ephemerals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an ephemeral"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Upload",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request a file upload authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/upload-request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a file upload authorization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,9 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pushbullet Realtime Event Stream",
+    "version": "v2"
+  },
+  "items": [],
+  "bundled": true
+}

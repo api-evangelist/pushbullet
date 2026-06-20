@@ -9,7 +9,7 @@ description: >-
   passed in the `Access-Token` header, with optional OAuth 2.0 for
   third-party applications.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Notifications
   - Messaging

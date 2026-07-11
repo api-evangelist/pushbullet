@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pushbullet-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/pushbullet-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.pushbullet.com/authorize
+    tokenUrl: https://api.pushbullet.com/oauth2/token
+  description: OAuth 2.0 for third-party applications.
+scopes:
+- scope: everything
+  description: Full access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/pushbullet-openapi.yml

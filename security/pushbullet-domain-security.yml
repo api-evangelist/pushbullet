@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.pushbullet.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  6 02:39:23 2026 GMT
+  hsts: false
+- host: docs.pushbullet.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  6 02:39:23 2026 GMT
+  hsts: false
+- host: api.pushbullet.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 17:50:04 2026 GMT
+  hsts: null
+domains:
+- domain: pushbullet.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none

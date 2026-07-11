@@ -67,6 +67,8 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/openapi/pushbullet-asyncapi.yml
 
 common:
+  - type: DomainSecurity
+    url: security/pushbullet-domain-security.yml
   - type: Authentication
     url: authentication/pushbullet-authentication.yml
   - type: OAuthScopes

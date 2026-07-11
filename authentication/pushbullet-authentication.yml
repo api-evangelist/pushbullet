@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pushbullet-openapi.yml
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: accessToken
+  type: apiKey
+  in: header
+  parameter: Access-Token
+  description: Pushbullet account access token from https://www.pushbullet.com/#settings/account
+  sources:
+  - openapi/pushbullet-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.pushbullet.com/authorize
+    tokenUrl: https://api.pushbullet.com/oauth2/token
+    scopes: 1
+  description: OAuth 2.0 for third-party applications.
+  sources:
+  - openapi/pushbullet-openapi.yml

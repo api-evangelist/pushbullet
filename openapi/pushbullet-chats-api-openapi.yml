@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Pushbullet HTTP Channels Chats API
+  version: v2
+  description: 'Pushbullet''s HTTP API lets developers send and manage pushes, devices,
+
+    chats, channels, subscriptions, text messages, ephemerals, and file
+
+    uploads across the Pushbullet ecosystem. Authentication uses an access
+
+    token from account settings supplied via the `Access-Token` header;
+
+    OAuth 2.0 is available for third-party applications.
+
+    '
+  contact:
+    name: Pushbullet
+    url: https://www.pushbullet.com
+servers:
+- url: https://api.pushbullet.com/v2
+  description: Pushbullet HTTP API
+security:
+- accessToken: []
+tags:
+- name: Chats
+paths:
+  /chats:
+    get:
+      tags:
+      - Chats
+      summary: List chats
+      operationId: listChats
+      responses:
+        '200':
+          description: Array of chats.
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - Chats
+      summary: Create chat with email
+      operationId: createChat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: Chat created.
+  /chats/{iden}:
+    post:
+      tags:
+      - Chats
+      summary: Update chat (mute)
+      operationId: updateChat
+      parameters:
+      - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                muted:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated chat.
+    delete:
+      tags:
+      - Chats
+      summary: Delete chat
+      operationId: deleteChat
+      parameters:
+      - $ref: '#/components/parameters/Iden'
+      responses:
+        '200':
+          description: Deleted.
+components:
+  parameters:
+    Iden:
+      name: iden
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: Access-Token
+      description: Pushbullet account access token from https://www.pushbullet.com/#settings/account
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party applications.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.pushbullet.com/authorize
+          tokenUrl: https://api.pushbullet.com/oauth2/token
+          scopes:
+            everything: Full access
+externalDocs:
+  description: Pushbullet API documentation
+  url: https://docs.pushbullet.com

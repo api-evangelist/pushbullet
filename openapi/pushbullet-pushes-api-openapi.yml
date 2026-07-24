@@ -1,0 +1,203 @@
+openapi: 3.1.0
+info:
+  title: Pushbullet HTTP Channels Pushes API
+  version: v2
+  description: 'Pushbullet''s HTTP API lets developers send and manage pushes, devices,
+
+    chats, channels, subscriptions, text messages, ephemerals, and file
+
+    uploads across the Pushbullet ecosystem. Authentication uses an access
+
+    token from account settings supplied via the `Access-Token` header;
+
+    OAuth 2.0 is available for third-party applications.
+
+    '
+  contact:
+    name: Pushbullet
+    url: https://www.pushbullet.com
+servers:
+- url: https://api.pushbullet.com/v2
+  description: Pushbullet HTTP API
+security:
+- accessToken: []
+tags:
+- name: Pushes
+paths:
+  /pushes:
+    get:
+      tags:
+      - Pushes
+      summary: List pushes
+      operationId: listPushes
+      parameters:
+      - name: modified_after
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: active
+        in: query
+        schema:
+          type: boolean
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Array of pushes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pushes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Push'
+                  cursor:
+                    type: string
+    post:
+      tags:
+      - Pushes
+      summary: Send a push
+      operationId: createPush
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PushInput'
+      responses:
+        '200':
+          description: Created push.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Push'
+    delete:
+      tags:
+      - Pushes
+      summary: Delete all pushes
+      operationId: deleteAllPushes
+      responses:
+        '200':
+          description: Deleted.
+  /pushes/{iden}:
+    post:
+      tags:
+      - Pushes
+      summary: Update a push (dismiss)
+      operationId: updatePush
+      parameters:
+      - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dismissed:
+                  type: boolean
+      responses:
+        '200':
+          description: Updated push.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Push'
+    delete:
+      tags:
+      - Pushes
+      summary: Delete a push
+      operationId: deletePush
+      parameters:
+      - $ref: '#/components/parameters/Iden'
+      responses:
+        '200':
+          description: Deleted.
+components:
+  schemas:
+    PushInput:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - note
+          - link
+          - file
+        title:
+          type: string
+        body:
+          type: string
+        url:
+          type: string
+        file_name:
+          type: string
+        file_type:
+          type: string
+        file_url:
+          type: string
+        device_iden:
+          type: string
+        email:
+          type: string
+        channel_tag:
+          type: string
+        guid:
+          type: string
+    Push:
+      type: object
+      additionalProperties: true
+      properties:
+        iden:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+        url:
+          type: string
+        file_name:
+          type: string
+        file_type:
+          type: string
+        file_url:
+          type: string
+        dismissed:
+          type: boolean
+  parameters:
+    Iden:
+      name: iden
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: Access-Token
+      description: Pushbullet account access token from https://www.pushbullet.com/#settings/account
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party applications.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.pushbullet.com/authorize
+          tokenUrl: https://api.pushbullet.com/oauth2/token
+          scopes:
+            everything: Full access
+externalDocs:
+  description: Pushbullet API documentation
+  url: https://docs.pushbullet.com

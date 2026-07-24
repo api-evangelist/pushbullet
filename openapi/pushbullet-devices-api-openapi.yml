@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: Pushbullet HTTP Channels Devices API
+  version: v2
+  description: 'Pushbullet''s HTTP API lets developers send and manage pushes, devices,
+
+    chats, channels, subscriptions, text messages, ephemerals, and file
+
+    uploads across the Pushbullet ecosystem. Authentication uses an access
+
+    token from account settings supplied via the `Access-Token` header;
+
+    OAuth 2.0 is available for third-party applications.
+
+    '
+  contact:
+    name: Pushbullet
+    url: https://www.pushbullet.com
+servers:
+- url: https://api.pushbullet.com/v2
+  description: Pushbullet HTTP API
+security:
+- accessToken: []
+tags:
+- name: Devices
+paths:
+  /devices:
+    get:
+      tags:
+      - Devices
+      summary: List devices
+      operationId: listDevices
+      responses:
+        '200':
+          description: Array of device objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+    post:
+      tags:
+      - Devices
+      summary: Create a device
+      operationId: createDevice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceInput'
+      responses:
+        '200':
+          description: Created device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+  /devices/{iden}:
+    post:
+      tags:
+      - Devices
+      summary: Update a device
+      operationId: updateDevice
+      parameters:
+      - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceInput'
+      responses:
+        '200':
+          description: Updated device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+    delete:
+      tags:
+      - Devices
+      summary: Delete a device
+      operationId: deleteDevice
+      parameters:
+      - $ref: '#/components/parameters/Iden'
+      responses:
+        '200':
+          description: Deleted.
+components:
+  schemas:
+    DeviceInput:
+      type: object
+      properties:
+        nickname:
+          type: string
+        model:
+          type: string
+        manufacturer:
+          type: string
+        push_token:
+          type: string
+        app_version:
+          type: integer
+        icon:
+          type: string
+        has_sms:
+          type: boolean
+    Device:
+      type: object
+      properties:
+        iden:
+          type: string
+        active:
+          type: boolean
+        nickname:
+          type: string
+        model:
+          type: string
+        manufacturer:
+          type: string
+        push_token:
+          type: string
+        app_version:
+          type: integer
+        icon:
+          type: string
+        has_sms:
+          type: boolean
+  parameters:
+    Iden:
+      name: iden
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: Access-Token
+      description: Pushbullet account access token from https://www.pushbullet.com/#settings/account
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party applications.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.pushbullet.com/authorize
+          tokenUrl: https://api.pushbullet.com/oauth2/token
+          scopes:
+            everything: Full access
+externalDocs:
+  description: Pushbullet API documentation
+  url: https://docs.pushbullet.com

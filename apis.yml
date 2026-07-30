@@ -9,7 +9,19 @@ description: >-
   passed in the `Access-Token` header, with optional OAuth 2.0 for
   third-party applications.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pushbullet.png
 tags:
   - Notifications
   - Messaging
@@ -23,49 +35,137 @@ created: '2026-05-11'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-  - aid: pushbullet:http-api
-    name: Pushbullet HTTP API
-    description: >-
-      REST API for sending and managing pushes, devices, chats, channels,
-      subscriptions, and file uploads across the Pushbullet ecosystem.
-      Authentication uses an access token from account settings supplied via
-      the `Access-Token` header; OAuth 2.0 is available for third-party apps.
-    humanURL: https://docs.pushbullet.com
-    baseURL: https://api.pushbullet.com/v2
-    tags:
-      - Notifications
-      - Push
-      - Devices
-      - Messaging
-      - SMS
-    properties:
-      - type: Documentation
-        url: https://docs.pushbullet.com
-      - type: OAuth
-        url: https://docs.pushbullet.com/#oauth2
-      - type: Realtime Event Stream
-        url: https://docs.pushbullet.com/#realtime-event-stream
-  - aid: pushbullet:realtime-event-stream
-    name: Pushbullet Realtime Event Stream
-    description: >-
-      Secure WebSocket stream that delivers realtime events to a Pushbullet
-      account, including periodic `nop` keep-alives, `tickle` notifications
-      that signal changes to pushes or devices, and `push` ephemerals for
-      mirrored notifications, dismissals, and universal clipboard.
-    humanURL: https://docs.pushbullet.com/#realtime-event-stream
-    baseURL: wss://stream.pushbullet.com/websocket
-    tags:
-      - Realtime
-      - WebSockets
-      - Streaming
-      - Push Notifications
-      - Events
-    properties:
-      - type: Documentation
-        url: https://docs.pushbullet.com/#realtime-event-stream
-      - type: AsyncAPI
-        url: https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/openapi/pushbullet-asyncapi.yml
-
+- aid: pushbullet:http-api
+  name: Pushbullet HTTP API
+  description: >-
+    REST API for sending and managing pushes, devices, chats, channels, subscriptions, and file uploads
+    across the Pushbullet ecosystem. Authentication uses an access token from account settings supplied
+    via the `Access-Token` header; OAuth 2.0 is available for third-party apps.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Notifications
+  - Push
+  - Devices
+  - Messaging
+  - SMS
+  properties:
+  - type: Documentation
+    url: https://docs.pushbullet.com
+  - type: OAuth
+    url: https://docs.pushbullet.com/#oauth2
+  - type: Realtime Event Stream
+    url: https://docs.pushbullet.com/#realtime-event-stream
+- aid: pushbullet:realtime-event-stream
+  name: Pushbullet Realtime Event Stream
+  description: >-
+    Secure WebSocket stream that delivers realtime events to a Pushbullet account, including periodic
+    `nop` keep-alives, `tickle` notifications that signal changes to pushes or devices, and `push` ephemerals
+    for mirrored notifications, dismissals, and universal clipboard.
+  humanURL: https://docs.pushbullet.com/#realtime-event-stream
+  baseURL: wss://stream.pushbullet.com/websocket
+  tags:
+  - Realtime
+  - WebSockets
+  - Streaming
+  - Push Notifications
+  - Events
+  properties:
+  - type: Documentation
+    url: https://docs.pushbullet.com/#realtime-event-stream
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/openapi/pushbullet-asyncapi.yml
+- aid: pushbullet:pushbullet-channels-api
+  name: Pushbullet Channels API
+  description: The Channels API from Pushbullet — 2 operation(s) for channels.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-channels-api-openapi.yml
+- aid: pushbullet:pushbullet-chats-api
+  name: Pushbullet Chats API
+  description: The Chats API from Pushbullet — 2 operation(s) for chats.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Chats
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-chats-api-openapi.yml
+- aid: pushbullet:pushbullet-devices-api
+  name: Pushbullet Devices API
+  description: The Devices API from Pushbullet — 2 operation(s) for devices.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-devices-api-openapi.yml
+- aid: pushbullet:pushbullet-ephemerals-api
+  name: Pushbullet Ephemerals API
+  description: The Ephemerals API from Pushbullet — 1 operation(s) for ephemerals.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Ephemerals
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-ephemerals-api-openapi.yml
+- aid: pushbullet:pushbullet-pushes-api
+  name: Pushbullet Pushes API
+  description: The Pushes API from Pushbullet — 2 operation(s) for pushes.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Pushes
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-pushes-api-openapi.yml
+- aid: pushbullet:pushbullet-subscriptions-api
+  name: Pushbullet Subscriptions API
+  description: The Subscriptions API from Pushbullet — 2 operation(s) for subscriptions.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-subscriptions-api-openapi.yml
+- aid: pushbullet:pushbullet-texts-api
+  name: Pushbullet Texts API
+  description: The Texts API from Pushbullet — 1 operation(s) for texts.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Texts
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-texts-api-openapi.yml
+- aid: pushbullet:pushbullet-upload-api
+  name: Pushbullet Upload API
+  description: The Upload API from Pushbullet — 1 operation(s) for upload.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Upload
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-upload-api-openapi.yml
+- aid: pushbullet:pushbullet-users-api
+  name: Pushbullet Users API
+  description: The Users API from Pushbullet — 1 operation(s) for users.
+  humanURL: https://docs.pushbullet.com
+  baseURL: https://api.pushbullet.com/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/pushbullet-users-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/pushbullet-agentic-access.yml

@@ -1,0 +1,573 @@
+openapi: 3.1.0
+info:
+  title: Pushbullet HTTP API
+  version: "v2"
+  description: |
+    Pushbullet's HTTP API lets developers send and manage pushes, devices,
+    chats, channels, subscriptions, text messages, ephemerals, and file
+    uploads across the Pushbullet ecosystem. Authentication uses an access
+    token from account settings supplied via the `Access-Token` header;
+    OAuth 2.0 is available for third-party applications.
+  contact:
+    name: Pushbullet
+    url: https://www.pushbullet.com
+externalDocs:
+  description: Pushbullet API documentation
+  url: https://docs.pushbullet.com
+servers:
+  - url: https://api.pushbullet.com/v2
+    description: Pushbullet HTTP API
+security:
+  - accessToken: []
+tags:
+  - name: Users
+  - name: Devices
+  - name: Pushes
+  - name: Chats
+  - name: Channels
+  - name: Subscriptions
+  - name: Texts
+  - name: Ephemerals
+  - name: Upload
+paths:
+  /users/me:
+    get:
+      tags: [Users]
+      summary: Get the current user
+      operationId: getMe
+      responses:
+        "200":
+          description: User object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /devices:
+    get:
+      tags: [Devices]
+      summary: List devices
+      operationId: listDevices
+      responses:
+        "200":
+          description: Array of device objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+    post:
+      tags: [Devices]
+      summary: Create a device
+      operationId: createDevice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceInput'
+      responses:
+        "200":
+          description: Created device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+  /devices/{iden}:
+    post:
+      tags: [Devices]
+      summary: Update a device
+      operationId: updateDevice
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceInput'
+      responses:
+        "200":
+          description: Updated device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+    delete:
+      tags: [Devices]
+      summary: Delete a device
+      operationId: deleteDevice
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      responses:
+        "200":
+          description: Deleted.
+  /pushes:
+    get:
+      tags: [Pushes]
+      summary: List pushes
+      operationId: listPushes
+      parameters:
+        - name: modified_after
+          in: query
+          schema:
+            type: number
+            format: double
+        - name: active
+          in: query
+          schema:
+            type: boolean
+        - name: cursor
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Array of pushes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pushes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Push'
+                  cursor:
+                    type: string
+    post:
+      tags: [Pushes]
+      summary: Send a push
+      operationId: createPush
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PushInput'
+      responses:
+        "200":
+          description: Created push.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Push'
+    delete:
+      tags: [Pushes]
+      summary: Delete all pushes
+      operationId: deleteAllPushes
+      responses:
+        "200":
+          description: Deleted.
+  /pushes/{iden}:
+    post:
+      tags: [Pushes]
+      summary: Update a push (dismiss)
+      operationId: updatePush
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dismissed:
+                  type: boolean
+      responses:
+        "200":
+          description: Updated push.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Push'
+    delete:
+      tags: [Pushes]
+      summary: Delete a push
+      operationId: deletePush
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      responses:
+        "200":
+          description: Deleted.
+  /chats:
+    get:
+      tags: [Chats]
+      summary: List chats
+      operationId: listChats
+      responses:
+        "200":
+          description: Array of chats.
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags: [Chats]
+      summary: Create chat with email
+      operationId: createChat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        "200":
+          description: Chat created.
+  /chats/{iden}:
+    post:
+      tags: [Chats]
+      summary: Update chat (mute)
+      operationId: updateChat
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                muted:
+                  type: boolean
+      responses:
+        "200":
+          description: Updated chat.
+    delete:
+      tags: [Chats]
+      summary: Delete chat
+      operationId: deleteChat
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      responses:
+        "200":
+          description: Deleted.
+  /channels:
+    post:
+      tags: [Channels]
+      summary: Create channel
+      operationId: createChannel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tag:
+                  type: string
+                name:
+                  type: string
+                description:
+                  type: string
+                image_url:
+                  type: string
+                website_url:
+                  type: string
+                feed_url:
+                  type: string
+                feed_filters:
+                  type: array
+                  items:
+                    type: object
+                subscribe:
+                  type: boolean
+      responses:
+        "200":
+          description: Channel created.
+  /channel-info:
+    get:
+      tags: [Channels]
+      summary: Get channel info
+      operationId: getChannelInfo
+      parameters:
+        - name: tag
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: no_recent_pushes
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Channel info.
+  /subscriptions:
+    get:
+      tags: [Subscriptions]
+      summary: List subscriptions
+      operationId: listSubscriptions
+      responses:
+        "200":
+          description: Array of subscriptions.
+    post:
+      tags: [Subscriptions]
+      summary: Subscribe to a channel
+      operationId: subscribe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channel_tag]
+              properties:
+                channel_tag:
+                  type: string
+      responses:
+        "200":
+          description: Subscription created.
+  /subscriptions/{iden}:
+    post:
+      tags: [Subscriptions]
+      summary: Update subscription
+      operationId: updateSubscription
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                muted:
+                  type: boolean
+      responses:
+        "200":
+          description: Updated subscription.
+    delete:
+      tags: [Subscriptions]
+      summary: Unsubscribe
+      operationId: unsubscribe
+      parameters:
+        - $ref: '#/components/parameters/Iden'
+      responses:
+        "200":
+          description: Unsubscribed.
+  /texts:
+    post:
+      tags: [Texts]
+      summary: Send SMS/MMS
+      operationId: sendText
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    target_device_iden:
+                      type: string
+                    addresses:
+                      type: array
+                      items:
+                        type: string
+                    message:
+                      type: string
+                    guid:
+                      type: string
+                file_url:
+                  type: string
+                skip_delete_file:
+                  type: boolean
+      responses:
+        "200":
+          description: Text created.
+  /ephemerals:
+    post:
+      tags: [Ephemerals]
+      summary: Send an ephemeral
+      operationId: sendEphemeral
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, push]
+              properties:
+                type:
+                  type: string
+                  enum: [push]
+                push:
+                  type: object
+                  additionalProperties: true
+      responses:
+        "200":
+          description: Ephemeral sent.
+  /upload-request:
+    post:
+      tags: [Upload]
+      summary: Request a file upload authorization
+      operationId: uploadRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [file_name, file_type]
+              properties:
+                file_name:
+                  type: string
+                file_type:
+                  type: string
+      responses:
+        "200":
+          description: Upload authorization.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file_name:
+                    type: string
+                  file_type:
+                    type: string
+                  file_url:
+                    type: string
+                  upload_url:
+                    type: string
+components:
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: header
+      name: Access-Token
+      description: Pushbullet account access token from https://www.pushbullet.com/#settings/account
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party applications.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.pushbullet.com/authorize
+          tokenUrl: https://api.pushbullet.com/oauth2/token
+          scopes:
+            everything: Full access
+  parameters:
+    Iden:
+      name: iden
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
+  schemas:
+    User:
+      type: object
+      properties:
+        iden:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        image_url:
+          type: string
+        max_upload_size:
+          type: integer
+    Device:
+      type: object
+      properties:
+        iden:
+          type: string
+        active:
+          type: boolean
+        nickname:
+          type: string
+        model:
+          type: string
+        manufacturer:
+          type: string
+        push_token:
+          type: string
+        app_version:
+          type: integer
+        icon:
+          type: string
+        has_sms:
+          type: boolean
+    DeviceInput:
+      type: object
+      properties:
+        nickname:
+          type: string
+        model:
+          type: string
+        manufacturer:
+          type: string
+        push_token:
+          type: string
+        app_version:
+          type: integer
+        icon:
+          type: string
+        has_sms:
+          type: boolean
+    Push:
+      type: object
+      additionalProperties: true
+      properties:
+        iden:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+        url:
+          type: string
+        file_name:
+          type: string
+        file_type:
+          type: string
+        file_url:
+          type: string
+        dismissed:
+          type: boolean
+    PushInput:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [note, link, file]
+        title:
+          type: string
+        body:
+          type: string
+        url:
+          type: string
+        file_name:
+          type: string
+        file_type:
+          type: string
+        file_url:
+          type: string
+        device_iden:
+          type: string
+        email:
+          type: string
+        channel_tag:
+          type: string
+        guid:
+          type: string

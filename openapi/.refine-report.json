@@ -1,0 +1,30 @@
+{
+  "provider": "pushbullet",
+  "sources": [
+    "pushbullet-channels-api-openapi.yml",
+    "pushbullet-chats-api-openapi.yml",
+    "pushbullet-devices-api-openapi.yml",
+    "pushbullet-ephemerals-api-openapi.yml",
+    "pushbullet-pushes-api-openapi.yml",
+    "pushbullet-subscriptions-api-openapi.yml",
+    "pushbullet-texts-api-openapi.yml",
+    "pushbullet-upload-api-openapi.yml",
+    "pushbullet-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "pushbullet-channels-api-openapi.yml",
+    "pushbullet-chats-api-openapi.yml",
+    "pushbullet-devices-api-openapi.yml",
+    "pushbullet-ephemerals-api-openapi.yml",
+    "pushbullet-pushes-api-openapi.yml",
+    "pushbullet-subscriptions-api-openapi.yml",
+    "pushbullet-texts-api-openapi.yml",
+    "pushbullet-upload-api-openapi.yml",
+    "pushbullet-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

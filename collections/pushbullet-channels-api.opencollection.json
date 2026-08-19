@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pushbullet HTTP Channels API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Access-Token",
+      "value": "{{Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/channels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create channel"
+        },
+        {
+          "info": {
+            "name": "Get channel info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/channel-info",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "no_recent_pushes",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get channel info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

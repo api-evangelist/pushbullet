@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "e078d0d4-95e0-4f72-9d00-e3d4a8c3622d",
+      "name": "Channels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5b673c0-1172-4934-8aee-426d55346b34",
+          "name": "Create channel",
+          "request": {
+            "name": "Create channel",
+            "description": {},
+            "url": {
+              "path": [
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"website_url\": \"<string>\",\n  \"feed_url\": \"<string>\",\n  \"feed_filters\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"subscribe\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64a1105d-a169-4c9c-b068-95eae11604b9",
+              "name": "Channel created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<string>\",\n  \"website_url\": \"<string>\",\n  \"feed_url\": \"<string>\",\n  \"feed_filters\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"subscribe\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c83cfa2-45ce-4be0-8540-3c23bbe0ca77",
+          "name": "Get channel info",
+          "request": {
+            "name": "Get channel info",
+            "description": {},
+            "url": {
+              "path": [
+                "channel-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "no_recent_pushes",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc7eaeb1-512b-41f0-b4c8-897143f9651a",
+              "name": "Channel info.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channel-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "no_recent_pushes",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pushbullet.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7c76218f-5144-4a60-9eff-300cf6c2c73e",
+    "name": "Pushbullet HTTP Channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pushbullet's HTTP API lets developers send and manage pushes, devices,\nchats, channels, subscriptions, text messages, ephemerals, and file\nuploads across the Pushbullet ecosystem. Authentication uses an access\ntoken from account settings supplied via the `Access-Token` header;\nOAuth 2.0 is available for third-party applications.\n\n\nContact Support:\n Name: Pushbullet",
+      "type": "text/plain"
+    }
+  }
+}

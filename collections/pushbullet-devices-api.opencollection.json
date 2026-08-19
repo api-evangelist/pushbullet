@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pushbullet HTTP Channels Devices API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Access-Token",
+      "value": "{{Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/devices"
+          },
+          "docs": "List devices"
+        },
+        {
+          "info": {
+            "name": "Create a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a device"
+        },
+        {
+          "info": {
+            "name": "Update a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/devices/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a device"
+        },
+        {
+          "info": {
+            "name": "Delete a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/devices/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

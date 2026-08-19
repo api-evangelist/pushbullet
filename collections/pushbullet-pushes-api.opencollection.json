@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pushbullet HTTP Channels Pushes API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Access-Token",
+      "value": "{{Access-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pushes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pushes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pushbullet.com/v2/pushes",
+            "params": [
+              {
+                "name": "modified_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List pushes"
+        },
+        {
+          "info": {
+            "name": "Send a push",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/pushes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a push"
+        },
+        {
+          "info": {
+            "name": "Delete all pushes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/pushes"
+          },
+          "docs": "Delete all pushes"
+        },
+        {
+          "info": {
+            "name": "Update a push (dismiss)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pushbullet.com/v2/pushes/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a push (dismiss)"
+        },
+        {
+          "info": {
+            "name": "Delete a push",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pushbullet.com/v2/pushes/:iden",
+            "params": [
+              {
+                "name": "iden",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a push"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "ffdfa7d5-6ccd-48d5-ae7b-f7910b46c1f8",
+      "name": "Ephemerals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba1ee1a3-6e66-452d-a710-de7b14f76e90",
+          "name": "Send an ephemeral",
+          "request": {
+            "name": "Send an ephemeral",
+            "description": {},
+            "url": {
+              "path": [
+                "ephemerals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"push\": {\n    \"key_0\": true,\n    \"key_1\": 8729,\n    \"key_2\": 1556\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7510a551-84a7-4ce6-a0df-5b206015030c",
+              "name": "Ephemeral sent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ephemerals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"push\": {\n    \"key_0\": false,\n    \"key_1\": 2956.6251978583846,\n    \"key_2\": 3024.698360086405,\n    \"key_3\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pushbullet.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bb830e97-f35e-48ed-ad79-7688fd7bea2f",
+    "name": "Pushbullet HTTP Channels Ephemerals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pushbullet's HTTP API lets developers send and manage pushes, devices,\nchats, channels, subscriptions, text messages, ephemerals, and file\nuploads across the Pushbullet ecosystem. Authentication uses an access\ntoken from account settings supplied via the `Access-Token` header;\nOAuth 2.0 is available for third-party applications.\n\n\nContact Support:\n Name: Pushbullet",
+      "type": "text/plain"
+    }
+  }
+}

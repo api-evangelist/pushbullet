@@ -1,0 +1,126 @@
+{
+  "item": [
+    {
+      "id": "d59c9b69-9fe5-4995-8247-48ced06c0570",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65a4ead3-9f86-48bc-885e-efc7d6e9f3d0",
+          "name": "Get the current user",
+          "request": {
+            "name": "Get the current user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "988bc164-2230-427a-8881-67f280b8cf1d",
+              "name": "User object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iden\": \"string\",\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"image_url\": \"string\",\n  \"max_upload_size\": 7682\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pushbullet.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9fc2319b-f371-48e3-9d66-8f3de30ebb71",
+    "name": "Pushbullet HTTP Channels Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pushbullet's HTTP API lets developers send and manage pushes, devices,\nchats, channels, subscriptions, text messages, ephemerals, and file\nuploads across the Pushbullet ecosystem. Authentication uses an access\ntoken from account settings supplied via the `Access-Token` header;\nOAuth 2.0 is available for third-party applications.\n\n\nContact Support:\n Name: Pushbullet",
+      "type": "text/plain"
+    }
+  }
+}

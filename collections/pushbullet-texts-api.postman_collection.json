@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "886310af-5cbc-4c24-ac6e-77e1aa9d4435",
+      "name": "Texts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34a53a99-8dbb-46db-b3f2-1079c3d62871",
+          "name": "Send SMS/MMS",
+          "request": {
+            "name": "Send SMS/MMS",
+            "description": {},
+            "url": {
+              "path": [
+                "texts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"target_device_iden\": \"<string>\",\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"guid\": \"<string>\"\n  },\n  \"file_url\": \"<string>\",\n  \"skip_delete_file\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9613205-f25b-4fcc-84f7-c8b88a67c217",
+              "name": "Text created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"target_device_iden\": \"<string>\",\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"guid\": \"<string>\"\n  },\n  \"file_url\": \"<string>\",\n  \"skip_delete_file\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pushbullet.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7b4809ee-0466-491c-9f04-73ec87e39ed7",
+    "name": "Pushbullet HTTP Channels Texts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pushbullet's HTTP API lets developers send and manage pushes, devices,\nchats, channels, subscriptions, text messages, ephemerals, and file\nuploads across the Pushbullet ecosystem. Authentication uses an access\ntoken from account settings supplied via the `Access-Token` header;\nOAuth 2.0 is available for third-party applications.\n\n\nContact Support:\n Name: Pushbullet",
+      "type": "text/plain"
+    }
+  }
+}

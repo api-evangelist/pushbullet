@@ -1,0 +1,417 @@
+{
+  "item": [
+    {
+      "id": "cecf5b0e-17d4-4e7c-bd5a-b51aba2fb4a5",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "70ca0002-1a6f-4a3c-bf6b-e51af4ce5134",
+          "name": "List devices",
+          "request": {
+            "name": "List devices",
+            "description": {},
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c000bfe6-42c5-4ab0-a372-255dcaeb2b7d",
+              "name": "Array of device objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"devices\": [\n    {\n      \"iden\": \"string\",\n      \"active\": false,\n      \"nickname\": \"string\",\n      \"model\": \"string\",\n      \"manufacturer\": \"string\",\n      \"push_token\": \"string\",\n      \"app_version\": 8598,\n      \"icon\": \"string\",\n      \"has_sms\": false\n    },\n    {\n      \"iden\": \"string\",\n      \"active\": true,\n      \"nickname\": \"string\",\n      \"model\": \"string\",\n      \"manufacturer\": \"string\",\n      \"push_token\": \"string\",\n      \"app_version\": 4598,\n      \"icon\": \"string\",\n      \"has_sms\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a915aad-8df4-4167-b8ff-fb47dfa297d8",
+          "name": "Create a device",
+          "request": {
+            "name": "Create a device",
+            "description": {},
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickname\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"push_token\": \"<string>\",\n  \"app_version\": \"<integer>\",\n  \"icon\": \"<string>\",\n  \"has_sms\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9422b69e-3fbb-4c5e-abeb-72b81b73c124",
+              "name": "Created device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nickname\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"push_token\": \"<string>\",\n  \"app_version\": \"<integer>\",\n  \"icon\": \"<string>\",\n  \"has_sms\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iden\": \"string\",\n  \"active\": true,\n  \"nickname\": \"string\",\n  \"model\": \"string\",\n  \"manufacturer\": \"string\",\n  \"push_token\": \"string\",\n  \"app_version\": 5926,\n  \"icon\": \"string\",\n  \"has_sms\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3211268f-f891-4871-86da-85ec77461271",
+          "name": "Update a device",
+          "request": {
+            "name": "Update a device",
+            "description": {},
+            "url": {
+              "path": [
+                "devices",
+                ":iden"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "iden",
+                  "description": "(Required) Resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nickname\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"push_token\": \"<string>\",\n  \"app_version\": \"<integer>\",\n  \"icon\": \"<string>\",\n  \"has_sms\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52920546-5890-4409-858e-b3eab49d6cb6",
+              "name": "Updated device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":iden"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "iden",
+                      "description": "(Required) Resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nickname\": \"<string>\",\n  \"model\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"push_token\": \"<string>\",\n  \"app_version\": \"<integer>\",\n  \"icon\": \"<string>\",\n  \"has_sms\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iden\": \"string\",\n  \"active\": true,\n  \"nickname\": \"string\",\n  \"model\": \"string\",\n  \"manufacturer\": \"string\",\n  \"push_token\": \"string\",\n  \"app_version\": 5926,\n  \"icon\": \"string\",\n  \"has_sms\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afd804d5-505f-4442-ac51-b88a6218f594",
+          "name": "Delete a device",
+          "request": {
+            "name": "Delete a device",
+            "description": {},
+            "url": {
+              "path": [
+                "devices",
+                ":iden"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "iden",
+                  "description": "(Required) Resource identifier."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "294a1b15-425e-4a5f-a534-03f463541401",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":iden"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "iden",
+                      "description": "(Required) Resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Access-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pushbullet.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Access-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "067e70fd-2c92-4c1c-8ee5-f83e81700ff6",
+    "name": "Pushbullet HTTP Channels Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pushbullet's HTTP API lets developers send and manage pushes, devices,\nchats, channels, subscriptions, text messages, ephemerals, and file\nuploads across the Pushbullet ecosystem. Authentication uses an access\ntoken from account settings supplied via the `Access-Token` header;\nOAuth 2.0 is available for third-party applications.\n\n\nContact Support:\n Name: Pushbullet",
+      "type": "text/plain"
+    }
+  }
+}

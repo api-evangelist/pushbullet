@@ -23,6 +23,13 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pushbullet.png
 tags:
+  - Notification
+  - Messaging
+  - Push Notifications
+  - Device Sync
+  - SMS
+  - File Transfer
+tags_raw:
   - Notifications
   - Messaging
   - Push Notifications
@@ -44,6 +51,12 @@ apis:
   humanURL: https://docs.pushbullet.com
   baseURL: https://api.pushbullet.com/v2
   tags:
+  - Notification
+  - Push
+  - Devices
+  - Messaging
+  - SMS
+  tags_raw:
   - Notifications
   - Push
   - Devices
@@ -65,6 +78,12 @@ apis:
   humanURL: https://docs.pushbullet.com/#realtime-event-stream
   baseURL: wss://stream.pushbullet.com/websocket
   tags:
+  - Real-Time
+  - WebSockets
+  - Streaming
+  - Push Notifications
+  - Event
+  tags_raw:
   - Realtime
   - WebSockets
   - Streaming
@@ -132,6 +151,8 @@ apis:
   humanURL: https://docs.pushbullet.com
   baseURL: https://api.pushbullet.com/v2
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -162,6 +183,8 @@ apis:
   humanURL: https://docs.pushbullet.com
   baseURL: https://api.pushbullet.com/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI

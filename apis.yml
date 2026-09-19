@@ -91,7 +91,7 @@ apis:
   baseURL: wss://stream.pushbullet.com/websocket
   tags:
   - Real-Time
-  - WebSockets
+  - WebSocket
   - Streaming
   - Push Notifications
   - Event

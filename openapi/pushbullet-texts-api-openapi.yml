@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Pushbullet HTTP Channels Texts API
+  title: Pushbullet HTTP Texts API
   version: v2
   description: 'Pushbullet''s HTTP API lets developers send and manage pushes, devices,
 
@@ -10,9 +10,7 @@ info:
 
     token from account settings supplied via the `Access-Token` header;
 
-    OAuth 2.0 is available for third-party applications.
-
-    '
+    OAuth 2.0 is available for third-party applications.'
   contact:
     name: Pushbullet
     url: https://www.pushbullet.com

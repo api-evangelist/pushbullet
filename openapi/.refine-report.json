@@ -1,15 +1,7 @@
 {
   "provider": "pushbullet",
   "sources": [
-    "pushbullet-channels-api-openapi.yml",
-    "pushbullet-chats-api-openapi.yml",
-    "pushbullet-devices-api-openapi.yml",
-    "pushbullet-ephemerals-api-openapi.yml",
-    "pushbullet-pushes-api-openapi.yml",
-    "pushbullet-subscriptions-api-openapi.yml",
-    "pushbullet-texts-api-openapi.yml",
-    "pushbullet-upload-api-openapi.yml",
-    "pushbullet-users-api-openapi.yml"
+    "_original/pushbullet-openapi.yml"
   ],
   "outputs": [
     "pushbullet-channels-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pushbullet-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "pushbullet-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-chats-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-ephemerals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-pushes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-texts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-upload-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pushbullet-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

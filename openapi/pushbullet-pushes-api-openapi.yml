@@ -121,14 +121,6 @@ paths:
         '200':
           description: Deleted.
 components:
-  parameters:
-    Iden:
-      name: iden
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: string
   schemas:
     Push:
       type: object
@@ -181,6 +173,14 @@ components:
           type: string
         guid:
           type: string
+  parameters:
+    Iden:
+      name: iden
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
   securitySchemes:
     accessToken:
       type: apiKey

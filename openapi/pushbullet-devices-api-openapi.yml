@@ -90,15 +90,24 @@ paths:
         '200':
           description: Deleted.
 components:
-  parameters:
-    Iden:
-      name: iden
-      in: path
-      required: true
-      description: Resource identifier.
-      schema:
-        type: string
   schemas:
+    DeviceInput:
+      type: object
+      properties:
+        nickname:
+          type: string
+        model:
+          type: string
+        manufacturer:
+          type: string
+        push_token:
+          type: string
+        app_version:
+          type: integer
+        icon:
+          type: string
+        has_sms:
+          type: boolean
     Device:
       type: object
       properties:
@@ -120,23 +129,14 @@ components:
           type: string
         has_sms:
           type: boolean
-    DeviceInput:
-      type: object
-      properties:
-        nickname:
-          type: string
-        model:
-          type: string
-        manufacturer:
-          type: string
-        push_token:
-          type: string
-        app_version:
-          type: integer
-        icon:
-          type: string
-        has_sms:
-          type: boolean
+  parameters:
+    Iden:
+      name: iden
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
   securitySchemes:
     accessToken:
       type: apiKey

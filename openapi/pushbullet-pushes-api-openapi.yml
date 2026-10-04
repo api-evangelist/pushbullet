@@ -122,28 +122,6 @@ paths:
           description: Deleted.
 components:
   schemas:
-    Push:
-      type: object
-      additionalProperties: true
-      properties:
-        iden:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        body:
-          type: string
-        url:
-          type: string
-        file_name:
-          type: string
-        file_type:
-          type: string
-        file_url:
-          type: string
-        dismissed:
-          type: boolean
     PushInput:
       type: object
       properties:
@@ -173,6 +151,28 @@ components:
           type: string
         guid:
           type: string
+    Push:
+      type: object
+      additionalProperties: true
+      properties:
+        iden:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+        url:
+          type: string
+        file_name:
+          type: string
+        file_type:
+          type: string
+        file_url:
+          type: string
+        dismissed:
+          type: boolean
   parameters:
     Iden:
       name: iden

@@ -91,9 +91,13 @@ paths:
           description: Deleted.
 components:
   schemas:
-    DeviceInput:
+    Device:
       type: object
       properties:
+        iden:
+          type: string
+        active:
+          type: boolean
         nickname:
           type: string
         model:
@@ -108,13 +112,9 @@ components:
           type: string
         has_sms:
           type: boolean
-    Device:
+    DeviceInput:
       type: object
       properties:
-        iden:
-          type: string
-        active:
-          type: boolean
         nickname:
           type: string
         model:

@@ -1,4 +1,4 @@
-# Pushbullet (pushbullet)
+# Pushbullet
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,85 +66,124 @@
 
 Pushbullet is a cross-device messaging and notification service that lets users sync notifications, links, files, and SMS between phones, tablets, and computers. The Pushbullet HTTP API enables developers to send pushes, manage devices and contacts, transfer files, subscribe to channels, and stream real-time events over WebSockets. Authentication uses access tokens passed in the `Access-Token` header, with optional OAuth 2.0 for third-party applications.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/apis.yml)
+**Areas:** Notification · Messaging · Push Notifications · Device Sync · SMS · File Transfer
 
-## Scope
+## Pushbullet on APIs.io
 
-- **Type:** Index
+Everything profiled for Pushbullet is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pushbullet/](https://apis.io/providers/pushbullet/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Notifications
-- Messaging
-- Push Notifications
-- Device Sync
-- SMS
-- File Transfer
+- [Pushbullet HTTP API](https://apis.io/apis/pushbullet/http-api/) — REST API for sending and managing pushes, devices, chats, channels, subscriptions, and file uploads across the Pushbullet ecosystem. Authentication uses an…
+- [Pushbullet Realtime Event Stream](https://apis.io/apis/pushbullet/realtime-event-stream/) — Secure WebSocket stream that delivers realtime events to a Pushbullet account, including periodic `nop` keep-alives, `tickle` notifications that signal…
+- [Pushbullet Channels API](https://apis.io/apis/pushbullet/pushbullet-channels-api/) — The Channels API from Pushbullet — 2 operation(s) for channels.
+- [Pushbullet Chats API](https://apis.io/apis/pushbullet/pushbullet-chats-api/) — The Chats API from Pushbullet — 2 operation(s) for chats.
+- [Pushbullet Devices API](https://apis.io/apis/pushbullet/pushbullet-devices-api/) — The Devices API from Pushbullet — 2 operation(s) for devices.
+- [Pushbullet Ephemerals API](https://apis.io/apis/pushbullet/pushbullet-ephemerals-api/) — The Ephemerals API from Pushbullet — 1 operation(s) for ephemerals.
+- [Pushbullet Pushes API](https://apis.io/apis/pushbullet/pushbullet-pushes-api/) — The Pushes API from Pushbullet — 2 operation(s) for pushes.
+- [Pushbullet Subscriptions API](https://apis.io/apis/pushbullet/pushbullet-subscriptions-api/) — The Subscriptions API from Pushbullet — 2 operation(s) for subscriptions.
+- [Pushbullet Texts API](https://apis.io/apis/pushbullet/pushbullet-texts-api/) — The Texts API from Pushbullet — 1 operation(s) for texts.
+- [Pushbullet Upload API](https://apis.io/apis/pushbullet/pushbullet-upload-api/) — The Upload API from Pushbullet — 1 operation(s) for upload.
+- [Pushbullet Users API](https://apis.io/apis/pushbullet/pushbullet-users-api/) — The Users API from Pushbullet — 1 operation(s) for users.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Pushbullet HTTP API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for sending and managing pushes, devices, chats, channels, subscriptions, and file uploads across the Pushbullet ecosystem. Authentication uses an access token from account settings supplied via the `Access-Token` header; OAuth 2.0 is available for third-party apps.
+- [Pushbullet Agentic Access](https://apis.io/agentic-access/pushbullet/pushbullet-agentic-access/)
 
-- **Human URL:** [https://docs.pushbullet.com](https://docs.pushbullet.com)
-- **Base URL:** `https://api.pushbullet.com/v2`
+#### Collections (11)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Notifications
-- Push
-- Devices
-- Messaging
-- SMS
+- [Pushbullet HTTP API](https://apis.io/collections/pushbullet/open-pushbullet/)
+- [Pushbullet Realtime Event Stream](https://apis.io/collections/pushbullet/open-pushbullet-asyncapi/)
+- [Pushbullet HTTP Channels API](https://apis.io/collections/pushbullet/open-pushbullet-channels-api/)
+- [Pushbullet HTTP Channels Chats API](https://apis.io/collections/pushbullet/open-pushbullet-chats-api/)
+- [Pushbullet HTTP Channels Devices API](https://apis.io/collections/pushbullet/open-pushbullet-devices-api/)
+- [Pushbullet HTTP Channels Ephemerals API](https://apis.io/collections/pushbullet/open-pushbullet-ephemerals-api/)
+- [Pushbullet HTTP Channels Pushes API](https://apis.io/collections/pushbullet/open-pushbullet-pushes-api/)
+- [Pushbullet HTTP Channels Subscriptions API](https://apis.io/collections/pushbullet/open-pushbullet-subscriptions-api/)
+- [Pushbullet HTTP Channels Texts API](https://apis.io/collections/pushbullet/open-pushbullet-texts-api/)
+- [Pushbullet HTTP Channels Upload API](https://apis.io/collections/pushbullet/open-pushbullet-upload-api/)
+- [Pushbullet HTTP Channels Users API](https://apis.io/collections/pushbullet/open-pushbullet-users-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://docs.pushbullet.com)
-- [O Auth](https://docs.pushbullet.com/#oauth2)
-- [Realtime  Event  Stream](https://docs.pushbullet.com/#realtime-event-stream)
-- [Postman Collection](collections/pushbullet.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pushbullet.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Pushbullet Realtime Event Stream
+- [Pushbullet Authentication](https://apis.io/security/pushbullet/pushbullet-authentication/)
+- [Pushbullet Domain Security](https://apis.io/security/pushbullet/pushbullet-domain-security/)
 
-Secure WebSocket stream that delivers realtime events to a Pushbullet account, including periodic `nop` keep-alives, `tickle` notifications that signal changes to pushes or devices, and `push` ephemerals for mirrored notifications, dismissals, and universal clipboard.
+#### OAuth scopes (1)
 
-- **Human URL:** [https://docs.pushbullet.com/#realtime-event-stream](https://docs.pushbullet.com/#realtime-event-stream)
-- **Base URL:** `wss://stream.pushbullet.com/websocket`
+The permissions the API asks for.
 
-#### Tags
+- [Pushbullet Scopes](https://apis.io/scopes/pushbullet/pushbullet-scopes/)
 
-- Realtime
-- WebSockets
-- Streaming
-- Push Notifications
-- Events
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://docs.pushbullet.com/#realtime-event-stream)
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/pushbullet/refs/heads/main/openapi/pushbullet-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/pushbullet.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pushbullet.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/pushbullet)
-- [LinkedIn](https://www.linkedin.com/company/pushbullet)
 - [Website](https://www.pushbullet.com)
 - [Documentation](https://docs.pushbullet.com)
-- [Sign Up](https://www.pushbullet.com/signup)
 - [Pricing](https://www.pushbullet.com/pro)
-- [Account  Settings](https://www.pushbullet.com/#settings/account)
-- [Help](https://help.pushbullet.com)
+- [Blog](http://blog.pushbullet.com/feed.xml)
+- [GitHub](https://github.com/pushbullet)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 54.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 23.7 |
+
+**Agent readiness 23.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.2** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pushbullet/](https://apis.io/providers/pushbullet/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Pushbullet: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pushbullet/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
